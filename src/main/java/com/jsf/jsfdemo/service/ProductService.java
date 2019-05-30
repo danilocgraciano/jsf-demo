@@ -3,9 +3,6 @@ package com.jsf.jsfdemo.service;
 import java.util.Collection;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -42,13 +39,13 @@ public class ProductService {
 
 	public String edit(int id) {
 		this.product = dao.get(id).get();
-		return "/form.xhtml?faces-redirect=true";
+		return "form?faces-redirect=true";
 	}
 
 	public String delete(int id) {
 		dao.delete(dao.get(id).get());
 		this.product = new Product();
-		return "/list.xhtml?faces-redirect=true";
+		return "list?faces-redirect=true";
 	}
 
 	public Product getProduct() {
