@@ -21,7 +21,7 @@ public class ProductService {
 	public String save() {
 		save(product);
 		product = new Product();
-		return "/list.xhtml?faces-redirect=true";
+		return "/list?faces-redirect=true";
 	}
 
 	public Collection<Product> getAll() {
@@ -37,9 +37,9 @@ public class ProductService {
 		return id;
 	}
 
-	public String edit(int id) {
-		this.product = dao.get(id).get();
-		return "form?faces-redirect=true";
+	public void load() {
+		this.product = dao.get(product.getId()).get();
+		// return "form?faces-redirect=true";
 	}
 
 	public String delete(int id) {

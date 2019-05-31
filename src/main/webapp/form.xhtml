@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+	<f:viewParam name="id" value="#{productController.product.id}" />
+	<f:viewAction action="#{productController.load}" rendered="#{not empty param.id}" />
+</f:metadata>
+
 <ui:composition template="layout.xhtml">
 	<ui:define name="content">
 		<h:form id="productForm">
@@ -13,7 +18,7 @@
 				<h:panelGrid columns="3" cellpadding="5">
 
 					<p:outputLabel for="name" value="Name: " />
-					<p:inputText id="name" value="#{productController.product.name}" required="true" requiredMessage="Name is required."/>
+					<p:inputText id="name" value="#{productController.product.name}" required="true" requiredMessage="Name is required." />
 					<p:message for="name" display="text" />
 
 					<p:outputLabel for="price" value="Price: " />
@@ -24,10 +29,11 @@
 
 					<h:commandButton value="Save" action="#{productController.save}" />
 					<h:button value="Back" outcome="list" />
-<!-- 					<h:commandLink value="Back" action="list" immediate="true"/> -->
+					
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
 	</ui:define>
 </ui:composition>
+
 </html>

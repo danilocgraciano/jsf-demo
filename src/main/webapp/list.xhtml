@@ -28,8 +28,11 @@
 					</p:column>
 					<p:column>
 						<f:facet name="header"></f:facet>
-						<h:commandButton action="#{productController.edit(product.id)}" value="Edit" />
-						<h:commandButton action="#{productController.delete(product.id)}" value="Delete" />
+						<h:link value="Edit" outcome="form">
+      						<f:param name="id" value="#{product.id}" />
+    					</h:link>
+    					<p:spacer width="10" />
+    					<h:commandLink action="#{productController.delete(product.id)}" value="Delete" />
 					</p:column>
 				</p:dataTable>
 		</h:form>
